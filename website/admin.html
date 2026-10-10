@@ -95,9 +95,13 @@
         unlock();
       };
       const existing = sessionStorage.getItem(sessionKey);
-      if (existing) verifyAdmin(existing).catch(() => sessionStorage.removeItem(sessionKey));
+      if (existing) verifyAdmin(existing).catch(() => {
+        sessionStorage.removeItem(sessionKey);
+        show('انتهت الجلسة السابقة. أدخل كلمة المرور لتسجيل الدخول من جديد.');
+      });
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        sessionStorage.removeItem(sessionKey);
         show('جارٍ التحقق...');
         const email = document.getElementById('admin-email').value.trim();
         const password = document.getElementById('admin-password').value;
