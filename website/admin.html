@@ -30,5 +30,43 @@
       <footer>Qareeb Control · مركز الإدارة <span>الحالة والأمان أولًا</span></footer>
     </main>
   </div>
+  <div id="admin-auth" class="admin-auth" dir="rtl">
+    <form id="admin-auth-form" class="admin-auth-card">
+      <p class="eyebrow">Qareeb Control</p>
+      <h2>دخول المسؤول</h2>
+      <p>تسجيل الدخول مطلوب للوصول إلى لوحة الإدارة.</p>
+      <label>البريد الإلكتروني<input id="admin-email" type="email" autocomplete="email" required></label>
+      <label>كلمة المرور<input id="admin-password" type="password" autocomplete="current-password" minlength="8" required></label>
+      <button class="primary" type="submit">تسجيل الدخول</button>
+      <small id="admin-auth-status" role="status"></small>
+    </form>
+  </div>
+  <script>
+    (() => {
+      const auth = document.getElementById('admin-auth');
+      const form = document.getElementById('admin-auth-form');
+      const status = document.getElementById('admin-auth-status');
+      const sessionKey = 'qareeb_admin_session';
+      const show = (message) => { status.textContent = message || ''; };
+      const unlock = () => { auth.hidden = true; document.body.classList.add('admin-unlocked'); };
+      if (sessionStorage.getItem(sessionKey)) unlock();
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        show('جارٍ التحقق...');
+        const email = document.getElementById('admin-email').value.trim();
+        const password = document.getElementById('admin-password').value;
+        try {
+          const response = await fetch('/api/auth/sign-in', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email, password})
+          });
+          const result = await response.json();
+          if (!response.ok || !result.access_token) throw new Error(result.error || 'بيانات الدخول غير صحيحة');
+          sessionStorage.setItem(sessionKey, result.access_token);
+          unlock();
+        } catch (error) { show(error.message || 'تعذر تسجيل الدخول'); }
+      });
+    })();
+  </script>
 </body>
 </html>
