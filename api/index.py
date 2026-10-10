@@ -6,6 +6,7 @@ accepts desktop-control commands.
 """
 import json
 import os
+from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 from http.server import BaseHTTPRequestHandler
@@ -68,13 +69,14 @@ class handler(BaseHTTPRequestHandler):
         return self.json(404, {"error": "not_found"})
 
     def do_POST(self):
+        path = urlsplit(self.path).path.rstrip("/")
         try: payload = self.body()
         except Exception: return self.json(400, {"error": "invalid_json"})
         try:
-            if self.path.endswith("/auth/register"):
+            if path in ("/auth/register", "/api/auth/register"):
                 status, result = self.supabase("/auth/v1/signup", "POST", {"email": payload.get("email", ""), "password": payload.get("password", "")})
                 return self.json(status, {"user": result.get("user"), "verificationRequired": not bool(result.get("session")), "error": result.get("msg") or result.get("message")})
-            if self.path.endswith("/auth/sign-in"):
+            if path in ("/auth/sign-in", "/api/auth/sign-in"):
                 status, result = self.supabase("/auth/v1/token?grant_type=password", "POST", {"email": payload.get("email", ""), "password": payload.get("password", "")})
                 return self.json(status, result)
         except KeyError: return self.json(500, {"error": "supabase_environment_missing"})
