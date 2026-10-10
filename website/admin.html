@@ -61,8 +61,22 @@
           if (stats[1]) stats[1].textContent = String((data.phones || []).length);
           const footer = document.querySelector('footer');
           if (footer) footer.dataset.controlPath = data.controlPath || 'local-only';
+          renderDetails(data);
         } catch (_) { /* dashboard remains usable with last-known display */ }
       };
+      const renderDetails = (data) => {
+        let area = document.getElementById('live-admin-details');
+        if (!area) {
+          area = document.createElement('section');
+          area.id = 'live-admin-details';
+          area.className = 'content-grid live-details';
+          document.querySelector('.main').appendChild(area);
+        }
+        const phones = (data.phones || []).map(phone => `<li><strong>${escapeHtml(phone.name || phone.phone_id)}</strong><small>${escapeHtml(phone.email || '')} · ${phone.revoked_at ? 'ملغى' : 'نشط'}</small></li>`).join('') || '<li>لا توجد هواتف مرتبطة بعد</li>';
+        const audit = (data.audit || []).slice(0, 8).map(event => `<li><strong>${escapeHtml(event.event_type)}</strong><small>${escapeHtml(event.source)} · ${escapeHtml(event.created_at || '')}</small></li>`).join('') || '<li>لا توجد أحداث بعد</li>';
+        area.innerHTML = `<article class="panel"><div class="panel-head"><div><p class="eyebrow">الهواتف</p><h2>الهواتف المرتبطة</h2></div></div><ul class="admin-list">${phones}</ul><p class="local-only-note">إلغاء الهاتف يمنع الاقتران المحلي القادم.</p></article><article class="panel"><div class="panel-head"><div><p class="eyebrow">الأمان</p><h2>سجل التدقيق</h2></div></div><ul class="admin-list">${audit}</ul></article><article class="panel"><div class="panel-head"><div><p class="eyebrow">الإعدادات</p><h2>النسخ والاشتراك</h2></div></div><p>النسخ الاحتياطي يقتصر على الإعدادات والأجهزة والصلاحيات فقط.</p><p>التحكم المحلي: <strong>متاح داخل الشبكة فقط</strong></p><p>الصلاحية الحالية: <strong>${escapeHtml(data.role || 'member')}</strong></p></article>`;
+      };
+      const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[character]));
       const verifyAdmin = async (token) => {
         const response = await fetch('/api/admin/check', {headers: {'Authorization': 'Bearer ' + token}});
         if (!response.ok) throw new Error(response.status === 403 ? 'هذا الحساب لا يملك صلاحية الإدارة' : 'انتهت جلسة الدخول');
