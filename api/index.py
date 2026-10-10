@@ -34,7 +34,7 @@ class handler(BaseHTTPRequestHandler):
         except HTTPError as error: return error.code, json.loads(error.read() or b"{}")
 
     def bearer(self):
-        value = self.headers.get("Authorization", "")
+        value = self.headers.get("Authorization", "") or ("Bearer " + self.headers.get("X-Qareeb-Token", ""))
         return value[7:].strip() if value.lower().startswith("bearer ") else ""
 
     def do_GET(self):
