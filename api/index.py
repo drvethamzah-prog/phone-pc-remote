@@ -32,9 +32,22 @@ class handler(BaseHTTPRequestHandler):
             with urlopen(request, timeout=8) as response: return response.status, json.loads(response.read() or b"{}")
         except HTTPError as error: return error.code, json.loads(error.read() or b"{}")
 
+    def bearer(self):
+        value = self.headers.get("Authorization", "")
+        return value[7:].strip() if value.lower().startswith("bearer ") else ""
+
     def do_GET(self):
         if self.path.rstrip("/") in ("", "/health", "/api", "/api/health"):
             return self.json(200, {"ok": True, "service": "qareeb-cloud", "controlPath": False})
+        if self.path.rstrip("/") in ("/admin/check", "/api/admin/check"):
+            token = self.bearer()
+            if not token: return self.json(401, {"error": "missing_session"})
+            status, user = self.supabase("/auth/v1/user", token=token)
+            if status != 200: return self.json(401, {"error": "invalid_session"})
+            metadata = user.get("user_metadata") or {}
+            role = metadata.get("role", "member")
+            if role not in ("owner", "admin"): return self.json(403, {"error": "admin_role_required"})
+            return self.json(200, {"ok": True, "role": role, "email": user.get("email")})
         return self.json(404, {"error": "not_found"})
 
     def do_POST(self):
