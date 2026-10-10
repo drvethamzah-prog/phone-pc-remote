@@ -44,7 +44,7 @@ class handler(BaseHTTPRequestHandler):
             token = self.bearer()
             if not token: return self.json(401, {"error": "missing_session"})
             status, user = self.supabase("/auth/v1/user", token=token)
-            if status != 200: return self.json(401, {"error": "invalid_session"})
+            if status != 200: return self.json(401, {"error": "invalid_session", "provider_status": status, "provider_message": user.get("msg") or user.get("message") or user.get("error_description")})
             user_id = user.get("id", "")
             role_status, rows = self.supabase(
                 "/rest/v1/account_members?user_id=eq." + user_id + "&select=role",

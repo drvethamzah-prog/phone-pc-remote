@@ -91,7 +91,11 @@
       const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[character]));
       const verifyAdmin = async (token) => {
         const response = await fetch('/api/admin/check', {headers: {'Authorization': 'Bearer ' + token}});
-        if (!response.ok) throw new Error(response.status === 403 ? 'هذا الحساب لا يملك صلاحية الإدارة' : 'انتهت جلسة الدخول');
+        if (!response.ok) {
+          const detail = await response.json().catch(() => ({}));
+          if (response.status === 403) throw new Error('هذا الحساب لا يملك صلاحية الإدارة');
+          throw new Error(detail.provider_message || 'تعذر التحقق من جلسة الدخول');
+        }
         unlock();
       };
       const existing = sessionStorage.getItem(sessionKey);
