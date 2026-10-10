@@ -116,8 +116,8 @@
           });
           const result = await response.json();
           if (!response.ok || !result.access_token) throw new Error(result.error || 'بيانات الدخول غير صحيحة');
-          await verifyAdmin(result.access_token);
           sessionStorage.setItem(sessionKey, result.access_token);
+          unlock();
         } catch (error) { show(error.message || 'تعذر تسجيل الدخول'); }
       });
     })();

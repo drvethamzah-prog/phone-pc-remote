@@ -37,6 +37,18 @@ class handler(BaseHTTPRequestHandler):
         value = self.headers.get("Authorization", "") or ("Bearer " + self.headers.get("X-Qareeb-Token", ""))
         return value[7:].strip() if value.lower().startswith("bearer ") else ""
 
+    def admin_user(self, token):
+        status, user = self.supabase("/auth/v1/user", token=token)
+        if status != 200:
+            return status, None, user
+        user_id = user.get("id", "")
+        role_status, rows = self.supabase(
+            "/rest/v1/account_members?user_id=eq." + user_id + "&select=role",
+            token=token,
+        )
+        role = rows[0].get("role", "member") if role_status == 200 and rows else "member"
+        return 200, {"user": user, "role": role}, rows
+
     def do_GET(self):
         if self.path.rstrip("/") in ("", "/health", "/api", "/api/health"):
             return self.json(200, {"ok": True, "service": "qareeb-cloud", "controlPath": False})
@@ -78,6 +90,13 @@ class handler(BaseHTTPRequestHandler):
                 return self.json(status, {"user": result.get("user"), "verificationRequired": not bool(result.get("session")), "error": result.get("msg") or result.get("message")})
             if path in ("/auth/sign-in", "/api/auth/sign-in"):
                 status, result = self.supabase("/auth/v1/token?grant_type=password", "POST", {"email": payload.get("email", ""), "password": payload.get("password", "")})
+                if status == 200 and result.get("access_token"):
+                    auth_status, identity, detail = self.admin_user(result["access_token"])
+                    if auth_status != 200:
+                        return self.json(401, {"error": "session_verification_failed", "provider_status": auth_status})
+                    if identity["role"] not in ("owner", "admin"):
+                        return self.json(403, {"error": "admin_role_required"})
+                    result["role"] = identity["role"]
                 return self.json(status, result)
         except KeyError: return self.json(500, {"error": "supabase_environment_missing"})
         return self.json(404, {"error": "not_found"})
