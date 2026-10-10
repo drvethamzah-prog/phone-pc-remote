@@ -44,8 +44,12 @@ class handler(BaseHTTPRequestHandler):
             if not token: return self.json(401, {"error": "missing_session"})
             status, user = self.supabase("/auth/v1/user", token=token)
             if status != 200: return self.json(401, {"error": "invalid_session"})
-            metadata = user.get("user_metadata") or {}
-            role = metadata.get("role", "member")
+            user_id = user.get("id", "")
+            role_status, rows = self.supabase(
+                "/rest/v1/account_members?user_id=eq." + user_id + "&select=role",
+                token=token,
+            )
+            role = rows[0].get("role", "member") if role_status == 200 and rows else "member"
             if role not in ("owner", "admin"): return self.json(403, {"error": "admin_role_required"})
             return self.json(200, {"ok": True, "role": role, "email": user.get("email")})
         return self.json(404, {"error": "not_found"})
