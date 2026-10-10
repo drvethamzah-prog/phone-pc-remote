@@ -851,6 +851,13 @@ public class MainActivity extends Activity {
         });
         panel.addView(text("Account email (required for pairing)", 13, false), compactWrap());
         panel.addView(accountEmailInput, matchWrap());
+        EditText cloudPasswordInput = input("Cloud password (for account sign-in)", "", InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        cloudPasswordInput.setTextDirection(View.TEXT_DIRECTION_LTR);
+        panel.addView(cloudPasswordInput, matchWrap());
+        LinearLayout cloudAuthButtons = row();
+        cloudAuthButtons.addView(outlinedButton("Create cloud account", v -> cloudAuth(cloudPasswordInput, false)), weight());
+        cloudAuthButtons.addView(outlinedButton("Sign in", v -> cloudAuth(cloudPasswordInput, true)), weight());
+        panel.addView(cloudAuthButtons, matchWrap());
         panel.addView(text(getString(R.string.ui_030), 13, false), compactWrap());
         panel.addView(hostInput, matchWrap());
         portInput.setTextDirection(View.TEXT_DIRECTION_LTR);
@@ -1533,6 +1540,42 @@ public class MainActivity extends Activity {
             return;
         }
         beginHandshake(code, false);
+    }
+
+    private void cloudAuth(EditText passwordInput, boolean signIn) {
+        String email = accountEmailInput == null ? "" : accountEmailInput.getText().toString().trim();
+        String password = passwordInput.getText().toString();
+        if (!email.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) {
+            setStatus("Enter a valid account email first");
+            accountEmailInput.requestFocus();
+            return;
+        }
+        if (password.length() < 8) {
+            setStatus("Cloud password must contain at least 8 characters");
+            passwordInput.requestFocus();
+            return;
+        }
+        setStatus(signIn ? "Signing in to cloud..." : "Creating cloud account...");
+        networkExecutor.execute(() -> {
+            try {
+                JSONObject result = CloudAuth.request(signIn ? "/api/auth/sign-in" : "/api/auth/register", email, password);
+                int status = result.optInt("httpStatus", 500);
+                mainHandler.post(() -> {
+                    if (status >= 200 && status < 300) {
+                        if (result.optBoolean("verificationRequired", false)) {
+                            setStatus("Account created. Check your email to verify it.");
+                        } else {
+                            setStatus(signIn ? "Cloud sign-in successful" : "Cloud account created");
+                        }
+                    } else {
+                        String error = result.optString("error", "cloud_request_failed");
+                        setStatus("Cloud error: " + error);
+                    }
+                });
+            } catch (Exception exc) {
+                mainHandler.post(() -> setStatus("Cloud connection failed: " + exc.getMessage()));
+            }
+        });
     }
 
     private void beginHandshake(String code, boolean quiet) {
