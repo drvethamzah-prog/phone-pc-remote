@@ -52,6 +52,19 @@ class handler(BaseHTTPRequestHandler):
             role = rows[0].get("role", "member") if role_status == 200 and rows else "member"
             if role not in ("owner", "admin"): return self.json(403, {"error": "admin_role_required"})
             return self.json(200, {"ok": True, "role": role, "email": user.get("email")})
+        if self.path.rstrip("/") in ("/admin/overview", "/api/admin/overview"):
+            token = self.bearer()
+            if not token: return self.json(401, {"error": "missing_session"})
+            status, user = self.supabase("/auth/v1/user", token=token)
+            if status != 200: return self.json(401, {"error": "invalid_session"})
+            user_id = user.get("id", "")
+            role_status, roles = self.supabase("/rest/v1/account_members?user_id=eq." + user_id + "&select=role", token=token)
+            role = roles[0].get("role", "member") if role_status == 200 and roles else "member"
+            if role not in ("owner", "admin"): return self.json(403, {"error": "admin_role_required"})
+            _, devices = self.supabase("/rest/v1/devices?user_id=eq." + user_id + "&select=*", token=token)
+            _, phones = self.supabase("/rest/v1/phones?user_id=eq." + user_id + "&select=*", token=token)
+            _, audit = self.supabase("/rest/v1/audit_events?user_id=eq." + user_id + "&select=*&order=created_at.desc&limit=50", token=token)
+            return self.json(200, {"role": role, "devices": devices, "phones": phones, "audit": audit, "controlPath": "local-only"})
         return self.json(404, {"error": "not_found"})
 
     def do_POST(self):

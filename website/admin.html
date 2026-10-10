@@ -48,7 +48,21 @@
       const status = document.getElementById('admin-auth-status');
       const sessionKey = 'qareeb_admin_session';
       const show = (message) => { status.textContent = message || ''; };
-      const unlock = () => { auth.hidden = true; document.body.classList.add('admin-unlocked'); };
+      const unlock = () => { auth.hidden = true; document.body.classList.add('admin-unlocked'); loadOverview(); };
+      const loadOverview = async () => {
+        const token = sessionStorage.getItem(sessionKey);
+        if (!token) return;
+        try {
+          const response = await fetch('/api/admin/overview', {headers: {'Authorization': 'Bearer ' + token}});
+          if (!response.ok) return;
+          const data = await response.json();
+          const stats = document.querySelectorAll('.stats article strong');
+          if (stats[0]) stats[0].textContent = String((data.devices || []).length);
+          if (stats[1]) stats[1].textContent = String((data.phones || []).length);
+          const footer = document.querySelector('footer');
+          if (footer) footer.dataset.controlPath = data.controlPath || 'local-only';
+        } catch (_) { /* dashboard remains usable with last-known display */ }
+      };
       const verifyAdmin = async (token) => {
         const response = await fetch('/api/admin/check', {headers: {'Authorization': 'Bearer ' + token}});
         if (!response.ok) throw new Error(response.status === 403 ? 'هذا الحساب لا يملك صلاحية الإدارة' : 'انتهت جلسة الدخول');
