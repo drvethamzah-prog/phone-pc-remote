@@ -101,7 +101,7 @@
       const existing = sessionStorage.getItem(sessionKey);
       if (existing) verifyAdmin(existing).catch(() => {
         sessionStorage.removeItem(sessionKey);
-        show('انتهت الجلسة السابقة. أدخل كلمة المرور لتسجيل الدخول من جديد.');
+        show('');
       });
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
