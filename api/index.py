@@ -79,3 +79,36 @@ class handler(BaseHTTPRequestHandler):
                 return self.json(status, result)
         except KeyError: return self.json(500, {"error": "supabase_environment_missing"})
         return self.json(404, {"error": "not_found"})
+
+    def do_PUT(self):
+        try: payload = self.body()
+        except Exception: return self.json(400, {"error": "invalid_json"})
+        token = self.bearer()
+        if not token: return self.json(401, {"error": "missing_session"})
+        status, user = self.supabase("/auth/v1/user", token=token)
+        if status != 200: return self.json(401, {"error": "invalid_session"})
+        if self.path.rstrip("/") not in ("/settings/backup", "/api/settings/backup"):
+            return self.json(404, {"error": "not_found"})
+        settings = payload.get("settings", {})
+        if not isinstance(settings, dict): return self.json(400, {"error": "settings_must_be_object"})
+        user_id = user.get("id")
+        status, result = self.supabase("/rest/v1/account_settings", "POST", {
+            "user_id": user_id, "settings": settings
+        }, token=token)
+        if status >= 400: return self.json(status, result)
+        return self.json(200, {"ok": True, "scope": "settings-only"})
+
+    def do_DELETE(self):
+        token = self.bearer()
+        if not token: return self.json(401, {"error": "missing_session"})
+        status, user = self.supabase("/auth/v1/user", token=token)
+        if status != 200: return self.json(401, {"error": "invalid_session"})
+        if self.path.startswith("/api/phones/") or self.path.startswith("/phones/"):
+            phone_id = self.path.rstrip("/").split("/")[-1]
+            status, result = self.supabase("/rest/v1/phones?id=eq." + phone_id, "PATCH", {"revoked_at": "now()"}, token=token)
+            return self.json(200 if status < 400 else status, {"ok": status < 400, "controlPath": "local-only"})
+        if self.path.startswith("/api/devices/") or self.path.startswith("/devices/"):
+            device_id = self.path.rstrip("/").split("/")[-1]
+            status, result = self.supabase("/rest/v1/devices?id=eq." + device_id, "DELETE", token=token)
+            return self.json(200 if status < 400 else status, {"ok": status < 400, "controlPath": "local-only"})
+        return self.json(404, {"error": "not_found"})
