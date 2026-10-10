@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qareeb Control — لوحة الإدارة</title>
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">Q</span><span>Qareeb Control</span></a>
+      <div class="workspace-label">مساحة العمل</div>
+      <button class="workspace"><span class="status-dot"></span><span><strong>فريق الإنتاج</strong><small>الخطة الاحترافية</small></span><span>⌄</span></button>
+      <nav>
+        <a class="active" href="#overview">◈ <span>نظرة عامة</span></a>
+        <a href="#devices">▣ <span>الأجهزة</span><b>12</b></a>
+        <a href="#sessions">◷ <span>الجلسات</span></a>
+        <a href="#access">♢ <span>الوصول والأمان</span></a>
+        <a href="#audit">≡ <span>سجل التدقيق</span></a>
+      </nav>
+      <div class="sidebar-bottom"><a href="#settings">⚙ <span>الإعدادات</span></a><a href="index.html">↩ <span>العودة للموقع</span></a></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">لوحة الإدارة</p><h1>نظرة عامة</h1></div><div class="top-actions"><span class="live"><i></i> النظام يعمل</span><button class="avatar">م</button></div></header>
+      <section class="environment-switcher"><button class="selected">☁ التعرف والمراقبة <small>مساعدة اختيارية</small></button><button>▣ اكتشاف محلي <small>الخادم + التطبيق عبر QR</small></button><span>امسح QR من التطبيق لربط الحساب محليًا</span></section>
+      <section class="stats"><article><span>الأجهزة المتصلة</span><strong>12</strong><em class="up">+3 هذا الأسبوع</em></article><article><span>الجلسات النشطة</span><strong>4</strong><em class="up">+12% اليوم</em></article><article><span>زمن الاستجابة</span><strong>84 <small>ms</small></strong><em class="good">ممتاز</em></article><article><span>حالة السيرفر الخاص</span><strong class="online">متصل</strong><em>192.168.1.24:8765</em></article></section>
+      <section class="content-grid"><article class="panel health"><div class="panel-head"><div><p class="eyebrow">المراقبة</p><h2>صحة الخدمة</h2></div><button class="ghost">آخر 24 ساعة⌄</button></div><div class="chart"><div class="chart-line"></div><div class="chart-labels"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>الآن</span></div></div><div class="legend"><span><i class="cloud"></i> السحابي 99.98%</span><span><i class="private"></i> الخاص 99.91%</span></div></article><article class="panel alerts"><div class="panel-head"><div><p class="eyebrow">تحتاج انتباهًا</p><h2>التنبيهات</h2></div><button class="ghost">عرض الكل</button></div><div class="alert warning"><b>!</b><span><strong>شهادة السيرفر الخاص</strong><small>تنتهي خلال 14 يومًا</small></span><button>معالجة</button></div><div class="alert info"><b>i</b><span><strong>تسجيل دخول جديد</strong><small>جهاز Windows — قبل 8 دقائق</small></span><button>مراجعة</button></div><div class="alert success"><b>✓</b><span><strong>نسخة احتياطية مكتملة</strong><small>السحابي — اليوم 03:00</small></span></div></article></section>
+      <section class="panel table-panel" id="devices"><div class="panel-head"><div><p class="eyebrow">إدارة الأسطول</p><h2>الأجهزة الأخيرة</h2></div><button class="primary">＋ إضافة جهاز</button></div><table><thead><tr><th>الجهاز</th><th>المالك</th><th>البيئة</th><th>آخر اتصال</th><th>الحالة</th><th></th></tr></thead><tbody><tr><td><span class="device-icon">▣</span><strong>DESKTOP-ALPHA</strong><small>Windows 11 · v2.4.1</small></td><td>أحمد خالد</td><td><span class="tag cloud-tag">سحابي</span></td><td>الآن</td><td><span class="pill online-pill">متصل</span></td><td>•••</td></tr><tr><td><span class="device-icon">▣</span><strong>WORKSTATION-02</strong><small>Windows 10 · v2.3.8</small></td><td>سارة عمر</td><td><span class="tag private-tag">خاص</span></td><td>منذ 4 دقائق</td><td><span class="pill online-pill">متصل</span></td><td>•••</td></tr><tr><td><span class="device-icon">▣</span><strong>OFFICE-PC-03</strong><small>Windows 11 · v2.4.0</small></td><td>فريق التصميم</td><td><span class="tag private-tag">خاص</span></td><td>منذ ساعتين</td><td><span class="pill offline-pill">غير متصل</span></td><td>•••</td></tr></tbody></table><button class="view-all">عرض جميع الأجهزة ←</button></section>
+      <footer>Qareeb Control · مركز الإدارة <span>الحالة والأمان أولًا</span></footer>
+    </main>
+  </div>
+</body>
+</html>

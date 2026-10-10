@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Qareeb Control local connection preview">
+  <rect width="960" height="540" fill="#f8fafc"/>
+  <rect x="84" y="86" width="250" height="368" rx="34" fill="#0f172a"/>
+  <rect x="106" y="124" width="206" height="286" rx="18" fill="#e0f2fe"/>
+  <circle cx="209" cy="431" r="12" fill="#94a3b8"/>
+  <rect x="556" y="106" width="300" height="210" rx="18" fill="#1e293b"/>
+  <rect x="582" y="132" width="248" height="144" rx="10" fill="#dbeafe"/>
+  <rect x="665" y="316" width="84" height="34" fill="#64748b"/>
+  <rect x="613" y="350" width="190" height="22" rx="8" fill="#334155"/>
+  <path d="M358 254 C430 198 500 198 536 246" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
+  <path d="M520 220 L546 250 L508 255" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="136" y="160" width="146" height="34" rx="12" fill="#2563eb"/>
+  <rect x="136" y="212" width="146" height="22" rx="10" fill="#38bdf8"/>
+  <rect x="136" y="252" width="92" height="22" rx="10" fill="#38bdf8"/>
+  <circle cx="706" cy="204" r="42" fill="#2563eb"/>
+  <path d="M690 204 h32 M706 188 v32" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <text x="480" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Local Wi-Fi Control</text>
+</svg>

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "status": "draft_not_deployed",
+  "authority": {
+    "source": "server_published_policy_version",
+    "managed_by": "admin_owner_aal2_recent_auth",
+    "workflow": "draft_validate_preview_publish",
+    "existing_subscriptions": "retain_purchased_terms_until_explicit_effective_change",
+    "audit_required": true,
+    "client_values_are_authoritative": false
+  },
+  "authority": {
+    "source": "server_published_policy_version",
+    "managed_by": "admin_owner_aal2_recent_auth",
+    "workflow": "draft_validate_preview_publish",
+    "existing_subscriptions": "retain_purchased_terms_until_explicit_effective_change",
+    "audit_required": true,
+    "client_values_are_authoritative": false
+  },
+  "confirmed": {
+    "email_verification_required": true,
+    "sign_in_required": true,
+    "base_phone_seats": 1,
+    "trial_phone_seats": 1,
+    "extra_seats_require_payment": true,
+    "permanent_free_tier": false,
+    "trial_scope": "all_pro_features",
+    "trial_start": "first_successful_activation_after_email_verification",
+    "recheck_seconds": 86400,
+    "max_offline_seconds": 604800,
+    "offline_bounded_by_entitlement": true,
+    "local_control_only": true,
+    "admin_web_only": true,
+    "biometric_unlock_optional": true
+  },
+  "unresolved": {
+    "trial_duration_definition": null,
+    "invitation_lifetime_seconds": null,
+    "max_purchased_phone_seats": null,
+    "replacement_cooldown_seconds": null,
+    "saved_computer_commercial_limit": null,
+    "prices_and_store_products": null,
+    "active_session_expiry_behavior": null
+  },
+  "activation_release_gate": "All required policy decisions must be resolved before trial or billing production activation."
+}

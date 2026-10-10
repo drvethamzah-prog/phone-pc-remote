@@ -1,0 +1,187 @@
+<resources>
+    <string name="ui_001" formatted="false">"Your computer"</string>
+    <string name="ui_002" formatted="false">"Disconnected"</string>
+    <string name="ui_003" formatted="false">"Connection and devices"</string>
+    <string name="ui_004" formatted="false">"Settings"</string>
+    <string name="ui_005" formatted="false">"Stop control"</string>
+    <string name="ui_006" formatted="false">"Control"</string>
+    <string name="ui_007" formatted="false">"Media"</string>
+    <string name="ui_008" formatted="false">"Devices"</string>
+    <string name="ui_009" formatted="false">"Touchpad"</string>
+    <string name="ui_010" formatted="false">"Left"</string>
+    <string name="ui_011" formatted="false">"Right"</string>
+    <string name="ui_012" formatted="false">"Backspace"</string>
+    <string name="ui_013" formatted="false">"Keyboard"</string>
+    <string name="ui_014" formatted="false">"Computer audio"</string>
+    <string name="ui_015" formatted="false">"Previous"</string>
+    <string name="ui_016" formatted="false">"Play or pause"</string>
+    <string name="ui_017" formatted="false">"Next"</string>
+    <string name="ui_018" formatted="false">"Volume up"</string>
+    <string name="ui_019" formatted="false">"Mute"</string>
+    <string name="ui_020" formatted="false">"Volume down"</string>
+    <string name="ui_021" formatted="false">"Shortcuts"</string>
+    <string name="ui_022" formatted="false">"Copy"</string>
+    <string name="ui_023" formatted="false">"Paste"</string>
+    <string name="ui_024" formatted="false">"Devices &amp; connection"</string>
+    <string name="ui_025" formatted="false">"Language"</string>
+    <string name="ui_026" formatted="false">"Response time: --"</string>
+    <string name="ui_027" formatted="false">"Computer address"</string>
+    <string name="ui_028" formatted="false">"Port"</string>
+    <string name="ui_029" formatted="false">"Pairing code"</string>
+    <string name="ui_030" formatted="false">"Computer address"</string>
+    <string name="ui_031" formatted="false">"Smart connect"</string>
+    <string name="ui_032" formatted="false">"Pair"</string>
+    <string name="ui_033" formatted="false">"Reconnect"</string>
+    <string name="ui_034" formatted="false">"Find computer"</string>
+    <string name="ui_035" formatted="false">"Connection check"</string>
+    <string name="ui_036" formatted="false">"Emulator"</string>
+    <string name="ui_037" formatted="false">"Management"</string>
+    <string name="ui_038" formatted="false">"Trusted devices"</string>
+    <string name="ui_039" formatted="false">"Enable control"</string>
+    <string name="ui_040" formatted="false">"Reset pairing code"</string>
+    <string name="ui_041" formatted="false">"Forget connection"</string>
+    <string name="ui_042" formatted="false">"Remove this phone"</string>
+    <string name="ui_043" formatted="false">"Power"</string>
+    <string name="ui_044" formatted="false">"Shut down"</string>
+    <string name="ui_045" formatted="false">"Cancel shutdown"</string>
+    <string name="ui_046" formatted="false">"Diagnostics"</string>
+    <string name="ui_047" formatted="false">"Status"</string>
+    <string name="ui_048" formatted="false">"Diagnostic details"</string>
+    <string name="ui_049" formatted="false">"Connecting..."</string>
+    <string name="ui_050" formatted="false">" · Control stopped"</string>
+    <string name="ui_051" formatted="false">" · Connected"</string>
+    <string name="ui_052" formatted="false">"Resume control"</string>
+    <string name="ui_053" formatted="false">"Open keyboard on connection"</string>
+    <string name="ui_054" formatted="false">"Pointer sensitivity: "</string>
+    <string name="ui_055" formatted="false">"Pointer sensitivity: %.1f"</string>
+    <string name="ui_056" formatted="false">"Cancel"</string>
+    <string name="ui_057" formatted="false">"Save"</string>
+    <string name="ui_058" formatted="false">"Forget this connection?"</string>
+    <string name="ui_059" formatted="false">"You will need to pair again."</string>
+    <string name="ui_060" formatted="false">"Forget"</string>
+    <string name="ui_061" formatted="false">"Connection is working"</string>
+    <string name="ui_062" formatted="false">"Computer: "</string>
+    <string name="ui_063" formatted="false">" - Devices: "</string>
+    <string name="ui_064" formatted="false">"Message error: "</string>
+    <string name="ui_065" formatted="false">"Searching the local network..."</string>
+    <string name="ui_066" formatted="false">"Still looking for your computer..."</string>
+    <string name="ui_067" formatted="false">"Search failed: "</string>
+    <string name="ui_068" formatted="false">"Computer not found. Open Qareeb Control on your computer and check that both devices are on the same local network."</string>
+    <string name="ui_069" formatted="false">"Computer"</string>
+    <string name="ui_070" formatted="false">"Found "</string>
+    <string name="ui_071" formatted="false">" - Enter the pairing code"</string>
+    <string name="ui_072" formatted="false">"Emulator connection selected"</string>
+    <string name="ui_073" formatted="false">"Enter the computer address shown on your computer"</string>
+    <string name="ui_074" formatted="false">"Checking connection response time..."</string>
+    <string name="ui_075" formatted="false">"Could not complete the connection check"</string>
+    <string name="ui_076" formatted="false">"Average: %.1f ms\nMaximum: %.1f ms\n10 of 10 measurements succeeded"</string>
+    <string name="ui_077" formatted="false">"Connection check completed"</string>
+    <string name="ui_078" formatted="false">"Check completed. Update Qareeb Control on your computer for improved connection support."</string>
+    <string name="ui_079" formatted="false">"Enter the pairing code shown on the computer"</string>
+    <string name="ui_080" formatted="false">"Connection attempt is still running"</string>
+    <string name="ui_081" formatted="false">"Confirming the connection..."</string>
+    <string name="ui_082" formatted="false">"Reply delayed; checking the same connection again..."</string>
+    <string name="ui_083" formatted="false">"Connected; mouse and keyboard are ready"</string>
+    <string name="ui_084" formatted="false">"Saved pairing was rejected. Pair again using the code currently shown on your computer."</string>
+    <string name="ui_085" formatted="false">"Pairing rejected: "</string>
+    <string name="ui_086" formatted="false">"No saved pairing. Pair first."</string>
+    <string name="ui_087" formatted="false">"Mouse movement error: "</string>
+    <string name="ui_088" formatted="false">"Click error: "</string>
+    <string name="ui_089" formatted="false">"Scroll error: "</string>
+    <string name="ui_090" formatted="false">"Use an English letter with Ctrl or Alt"</string>
+    <string name="ui_091" formatted="false">"Cannot send text; wait for pending commands and try again"</string>
+    <string name="ui_092" formatted="false">"Live keyboard error: "</string>
+    <string name="ui_093" formatted="false">"Keyboard error: "</string>
+    <string name="ui_094" formatted="false">"Media error: "</string>
+    <string name="ui_095" formatted="false">"Shortcut error: "</string>
+    <string name="ui_096" formatted="false">"Device"</string>
+    <string name="ui_097" formatted="false">" (this phone)"</string>
+    <string name="ui_098" formatted="false">"Close"</string>
+    <string name="ui_099" formatted="false">"Device list error: "</string>
+    <string name="ui_100" formatted="false">"Sensitivity updated"</string>
+    <string name="ui_101" formatted="false">"Settings update error: "</string>
+    <string name="ui_102" formatted="false">"Pairing code reset"</string>
+    <string name="ui_103" formatted="false">"Pairing code: "</string>
+    <string name="ui_104" formatted="false">"Pairing code error: "</string>
+    <string name="ui_105" formatted="false">"Phone removed. Pair again to reconnect."</string>
+    <string name="ui_106" formatted="false">"Device removal error: "</string>
+    <string name="ui_107" formatted="false">"Wait for the current connection attempt"</string>
+    <string name="ui_108" formatted="false">"Connection forgotten on this phone. Use the current computer pairing code to pair again."</string>
+    <string name="ui_109" formatted="false">"Pair before using power controls."</string>
+    <string name="ui_110" formatted="false">"Shut down the computer?"</string>
+    <string name="ui_111" formatted="false">"The computer will shut down in 30 seconds. You can cancel using Cancel shutdown."</string>
+    <string name="ui_112" formatted="false">"Shut down"</string>
+    <string name="ui_113" formatted="false">"Test only: shutdown accepted"</string>
+    <string name="ui_114" formatted="false">"Shutdown scheduled in "</string>
+    <string name="ui_115" formatted="false">" seconds"</string>
+    <string name="ui_116" formatted="false">"Shutdown error: "</string>
+    <string name="ui_117" formatted="false">"Test only: shutdown cancelled"</string>
+    <string name="ui_118" formatted="false">"Shutdown cancelled"</string>
+    <string name="ui_119" formatted="false">"Cancel shutdown error: "</string>
+    <string name="ui_120" formatted="false">"Computer control enabled"</string>
+    <string name="ui_121" formatted="false">"Enable control error: "</string>
+    <string name="ui_122" formatted="false">"Computer control stopped"</string>
+    <string name="ui_123" formatted="false">"Stop control error: "</string>
+    <string name="ui_124" formatted="false">"Wait for connection confirmation"</string>
+    <string name="ui_125" formatted="false">"Control stopped"</string>
+    <string name="ui_126" formatted="false">"Connect first"</string>
+    <string name="ui_127" formatted="false">"Error: "</string>
+    <string name="ui_128" formatted="false">"Done: "</string>
+    <string name="ui_129" formatted="false">"Cannot prepare control command"</string>
+    <string name="ui_130" formatted="false">"Connection is slow; wait for pending commands"</string>
+    <string name="ui_131" formatted="false">"Response time: %.1f ms"</string>
+    <string name="ui_132" formatted="false">"Connected"</string>
+    <string name="ui_133" formatted="false">"pairing/reconnection"</string>
+    <string name="ui_134" formatted="false">"connection"</string>
+    <string name="ui_135" formatted="false">"Request sent, but no computer reply. Saved pairing was not changed."</string>
+    <string name="ui_136" formatted="false">"Cannot connect to "</string>
+    <string name="ui_137" formatted="false">". Check the computer address."</string>
+    <string name="ui_138" formatted="false">"Timed out during "</string>
+    <string name="ui_139" formatted="false">" with "</string>
+    <string name="ui_140" formatted="false">". Find the computer, then pair or reconnect."</string>
+    <string name="ui_141" formatted="false">"Failed "</string>
+    <string name="ui_142" formatted="false">"No reply from the computer"</string>
+    <string name="ui_143" formatted="false">"Checking saved connection"</string>
+    <string name="ui_144" formatted="false">"Emulator host: 10.0.2.2. Enter the code and tap Pair."</string>
+    <string name="ui_145" formatted="false">"Enter the computer address and pairing code, then tap Pair"</string>
+    <string name="language_title" formatted="false">"App language"</string>
+    <string name="language_system" formatted="false">"System language"</string>
+    <string name="language_cancel" formatted="false">"Cancel"</string>
+    <string name="local_network_lost">Local connection lost. Waiting for the network.</string>
+    <string name="local_network_required">Connect both devices to the same local network and check the connection mode. Mobile data and VPN connections cannot be used for control.</string>
+    <string name="server_identity_unverified">Could not verify the paired computer. Update the desktop server or check pairing.</string>
+    <string name="tls_fingerprint">Computer certificate fingerprint (SHA-256)</string>
+    <string name="tls_invalid">Enter the 64 hexadecimal characters shown on your computer.</string>
+    <string name="tls_saved">Computer identity saved. Future connections must be encrypted.</string>
+    <string name="tls_save_failed">Could not save the computer identity.</string>
+    <string name="tls_failed">Secure connection failed. Check the security fingerprint and secure connection settings on your computer. An unencrypted connection will not be used.</string>
+    <string name="qr_scan">Scan pairing QR</string>
+    <string name="qr_confirm">Pair with this computer?</string>
+    <string name="qr_invalid">This pairing code is invalid or expired. Show a new QR code on your computer and scan it again. Check the date and time on both devices if this continues.</string>
+    <string name="transport_mode">Connection mode</string>
+    <string name="transport_auto">Automatic local network</string>
+    <string name="transport_usb">USB network only (experimental)</string>
+    <string name="transport_auto_short">Automatic</string>
+    <string name="transport_usb_short">USB only</string>
+    <string name="transport_usb_requires_android">USB mode needs Android 12 or later and a supported USB network connection. A charging cable alone is not enough; support varies by device.</string>
+    <string name="credential_storage_error">Secure pairing storage is unavailable. Your saved pairing has not been deleted. Restart the app and try again.</string>
+    <string name="computers_title">My Computers</string>
+    <string name="computer_add">Add Computer</string>
+    <string name="computer_empty">No saved computers</string>
+    <string name="computer_connected">Connected</string>
+    <string name="computer_saved">Saved</string>
+    <string name="computer_connect">Connect</string>
+    <string name="computer_forget">Forget Computer</string>
+    <string name="computer_forget_confirm">Forget %1$s on this phone? This does not revoke the phone on the computer.</string>
+    <string name="computer_forgotten">Computer forgotten on this phone.</string>
+    <string name="computer_last_connected">Last connected: %1$s</string>
+    <string name="computer_new_ready">Ready to pair another computer.</string>
+    <string name="computer_storage_error">Cannot access saved computers. Your pairings have not been reset.</string>
+    <string name="computer_reconnect_required">Address changed. Reconnect before sending commands.</string>
+    <string name="adaptive_connection">Improve responsiveness</string>
+    <string name="auto_keyboard_focus">Open keyboard for computer text fields</string>
+    <string name="connection_attention">Connection needs attention</string>
+    <string name="connection_no_network">Connect to a local network to reach your computer.</string>
+    <string name="connection_retry_hint">Check your computer and reconnect in Devices.</string>
+    <string name="connection_details_hint">Check connection details in Devices.</string>
+</resources>

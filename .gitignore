@@ -1,0 +1,28 @@
+# Secrets and local state
+.env
+.env.*
+!.env.example
+backend/data/
+backend/*.sqlite3
+desktop-server/data/*.log
+desktop-server/data/diagnostics/
+desktop-server/data/local-identity.json
+
+# Local SDK/tool caches and generated builds
+.android-sdk/
+.android-avd/
+.android-home/
+.codex-remote-attachments/
+.gradle-local/
+mobile-app/.gradle/
+mobile-app/build/
+mobile-app/app/build/
+**/__pycache__/
+*.pyc
+
+# IDE/OS files
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+.DS_Store

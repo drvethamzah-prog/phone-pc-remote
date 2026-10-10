@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.qareeb.invalid/v1/activation-request",
+  "title": "Device activation request; actor identity comes from verified session",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["accountId", "deviceName", "platform", "appBuild", "publicKey", "challengeId", "proof"],
+  "properties": {
+    "accountId": {"type": "string", "format": "uuid"},
+    "deviceName": {"type": "string", "minLength": 1, "maxLength": 80},
+    "platform": {"enum": ["android", "ios"]},
+    "appBuild": {"type": "integer", "minimum": 1},
+    "challengeId": {"type": "string", "format": "uuid"},
+    "proof": {"type": "string", "maxLength": 2048, "pattern": "^[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+$"},
+    "publicKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kty", "crv", "x", "y"],
+      "properties": {
+        "kty": {"const": "EC"},
+        "crv": {"const": "P-256"},
+        "x": {"type": "string", "pattern": "^[A-Za-z0-9_-]{43}$"},
+        "y": {"type": "string", "pattern": "^[A-Za-z0-9_-]{43}$"}
+      }
+    }
+  }
+}

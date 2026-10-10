@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.phonepcremote'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.phonepcremote'
+        minSdk 23
+        targetSdk 35
+        versionCode 41
+        versionName '0.41.0-connection-notice'
+        testInstrumentationRunner 'com.phonepcremote.KeyboardInstrumentation'
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
+}

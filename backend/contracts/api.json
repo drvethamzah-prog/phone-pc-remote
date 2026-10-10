@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "account_flows": [
+    {"method": "POST", "path": "/v1/auth/register", "permission": "public", "idempotent": true, "purpose": "Create account with mandatory email and queue verification"},
+    {"method": "POST", "path": "/v1/auth/verify-email", "permission": "public_with_challenge", "idempotent": true, "purpose": "Consume single-use email verification challenge"},
+    {"method": "POST", "path": "/v1/auth/sign-in", "permission": "public", "idempotent": false, "purpose": "Sign in and return session for account linking"},
+    {"method": "GET", "path": "/v1/settings/backup", "permission": "verified_scoped_member", "idempotent": true, "purpose": "Read settings-only backup; never control credentials"},
+    {"method": "PUT", "path": "/v1/settings/backup", "permission": "verified_scoped_member", "idempotent": true, "purpose": "Replace settings-only backup"}
+  ],
+  "auth_provider": "candidate_supabase_auth",
+  "shared_requirements": ["https", "bounded_json_body", "rate_limits", "request_id", "redacted_logs", "explicit_authorization"],
+  "routes": [
+    {"method": "GET", "path": "/v1/admin/policies", "permission": "admin_owner_aal2", "purpose": "Read policy versions, drafts and effective dates"},
+    {"method": "POST", "path": "/v1/admin/policies/drafts", "permission": "admin_owner_aal2_recent_auth", "idempotent": true, "purpose": "Create immutable draft from current version, never mutate live policy"},
+    {"method": "POST", "path": "/v1/admin/policies/{id}/preview", "permission": "admin_owner_aal2_recent_auth", "idempotent": true, "purpose": "Validate proposed rules and show effects on new and existing subscriptions"},
+    {"method": "POST", "path": "/v1/admin/policies/{id}/publish", "permission": "admin_owner_aal2_recent_auth", "idempotent": true, "purpose": "Atomically publish a validated version with effective date, scope, reason and expected current version"},
+    {"method": "GET", "path": "/v1/me", "permission": "signed_in", "purpose": "Account verification and membership summary"},
+    {"method": "GET", "path": "/v1/version-policy", "permission": "public", "purpose": "Nonsecret compatibility policy; cannot grant entitlement"},
+    {"method": "POST", "path": "/v1/activation-challenges", "permission": "verified_member", "idempotent": true, "purpose": "Short-lived single-use device proof challenge"},
+    {"method": "POST", "path": "/v1/activations", "permission": "verified_member_with_device_proof", "idempotent": true, "purpose": "Atomic seat allocation after fresh challenge proof"},
+    {"method": "POST", "path": "/v1/permits", "permission": "verified_active_device_with_proof", "idempotent": true, "purpose": "Authoritative entitlement check and signed offline permit"},
+    {"method": "GET", "path": "/v1/devices", "permission": "verified_scoped_member", "purpose": "Owner sees account devices; member sees own devices"},
+    {"method": "DELETE", "path": "/v1/devices/{id}", "permission": "verified_device_owner_or_account_owner", "idempotent": true, "purpose": "Revoke future permits; existing offline permits expire naturally"},
+    {"method": "POST", "path": "/v1/invitations", "permission": "verified_account_owner", "idempotent": true, "purpose": "Reserve an available seat and queue email atomically"},
+    {"method": "POST", "path": "/v1/invitations/{id}/accept", "permission": "verified_invited_email", "idempotent": true, "purpose": "Accept token and convert reservation without duplicating seat"},
+    {"method": "DELETE", "path": "/v1/invitations/{id}", "permission": "verified_account_owner", "idempotent": true, "purpose": "Cancel pending invitation and release its reservation"},
+    {"method": "DELETE", "path": "/v1/me", "permission": "recent_authenticated_user", "idempotent": true, "purpose": "Start account deletion flow; clarify store billing and retention separately"},
+    {"method": "POST", "path": "/v1/store-purchases/verify", "permission": "verified_account_owner", "idempotent": true, "purpose": "Verify evidence with store; do not trust client success"},
+    {"method": "POST", "path": "/v1/store-events/{provider}", "permission": "verified_store_event", "idempotent": true, "purpose": "Verified Google/Apple notifications, deduplicated and reconciled"},
+    {"method": "GET", "path": "/v1/admin/accounts", "permission": "admin_support_or_owner_aal2", "purpose": "Paginated minimum-data support view"},
+    {"method": "POST", "path": "/v1/admin/accounts/{id}/overrides", "permission": "admin_owner_aal2_recent_auth", "idempotent": true, "purpose": "Audited bounded entitlement override with reason; never fake a store purchase"}
+  ],
+  "error_codes": ["EMAIL_NOT_VERIFIED", "FORBIDDEN", "SEAT_LIMIT_REACHED", "DEVICE_PROOF_REQUIRED", "INVITATION_EXPIRED", "INVITATION_EMAIL_MISMATCH", "ENTITLEMENT_EXPIRED", "ONLINE_CHECK_REQUIRED", "UPDATE_REQUIRED", "POLICY_NOT_CONFIGURED", "IDEMPOTENCY_CONFLICT", "RATE_LIMITED", "SERVICE_UNAVAILABLE"]
+}

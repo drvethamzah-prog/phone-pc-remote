@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.qareeb.invalid/v1/permit-payload",
+  "title": "Proposed signed permit payload; shape validation is not signature verification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["v", "iss", "aud", "jti", "sub", "accountId", "cnf", "iat", "nbf", "exp", "recheckAt", "entitlementExpiresAt", "features"],
+  "properties": {
+    "v": {"const": 1},
+    "iss": {"const": "qareeb-activation"},
+    "aud": {"const": "qareeb-local-control"},
+    "jti": {"type": "string", "format": "uuid"},
+    "sub": {"type": "string", "format": "uuid"},
+    "accountId": {"type": "string", "format": "uuid"},
+    "cnf": {
+      "type": "object", "additionalProperties": false,
+      "required": ["jkt"],
+      "properties": {"jkt": {"type": "string", "pattern": "^[A-Za-z0-9_-]{43}$"}}
+    },
+    "iat": {"type": "integer", "minimum": 1},
+    "nbf": {"type": "integer", "minimum": 1},
+    "exp": {"type": "integer", "minimum": 1},
+    "recheckAt": {"type": "integer", "minimum": 1},
+    "entitlementExpiresAt": {"type": "integer", "minimum": 1},
+    "features": {
+      "type": "array", "minItems": 1, "maxItems": 6, "uniqueItems": true,
+      "items": {"enum": ["mouse", "keyboard", "media", "shortcuts", "presentation", "power"]}
+    }
+  }
+}

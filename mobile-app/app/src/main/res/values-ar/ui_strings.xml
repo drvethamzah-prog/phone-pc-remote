@@ -1,0 +1,187 @@
+<resources>
+    <string name="ui_001" formatted="false">"حاسوبك"</string>
+    <string name="ui_002" formatted="false">"غير متصل"</string>
+    <string name="ui_003" formatted="false">"حالة الاتصال والأجهزة"</string>
+    <string name="ui_004" formatted="false">"الإعدادات"</string>
+    <string name="ui_005" formatted="false">"إيقاف التحكم"</string>
+    <string name="ui_006" formatted="false">"التحكم"</string>
+    <string name="ui_007" formatted="false">"الوسائط"</string>
+    <string name="ui_008" formatted="false">"الأجهزة"</string>
+    <string name="ui_009" formatted="false">"لوحة اللمس"</string>
+    <string name="ui_010" formatted="false">"يسار"</string>
+    <string name="ui_011" formatted="false">"يمين"</string>
+    <string name="ui_012" formatted="false">"حذف"</string>
+    <string name="ui_013" formatted="false">"لوحة المفاتيح"</string>
+    <string name="ui_014" formatted="false">"صوت الحاسوب"</string>
+    <string name="ui_015" formatted="false">"السابق"</string>
+    <string name="ui_016" formatted="false">"تشغيل أو إيقاف مؤقت"</string>
+    <string name="ui_017" formatted="false">"التالي"</string>
+    <string name="ui_018" formatted="false">"رفع الصوت"</string>
+    <string name="ui_019" formatted="false">"كتم الصوت"</string>
+    <string name="ui_020" formatted="false">"خفض الصوت"</string>
+    <string name="ui_021" formatted="false">"الاختصارات"</string>
+    <string name="ui_022" formatted="false">"نسخ"</string>
+    <string name="ui_023" formatted="false">"لصق"</string>
+    <string name="ui_024" formatted="false">"الأجهزة والاتصال"</string>
+    <string name="ui_025" formatted="false">"اللغة"</string>
+    <string name="ui_026" formatted="false">"زمن الاستجابة: --"</string>
+    <string name="ui_027" formatted="false">"عنوان الحاسوب"</string>
+    <string name="ui_028" formatted="false">"المنفذ"</string>
+    <string name="ui_029" formatted="false">"رمز الاقتران"</string>
+    <string name="ui_030" formatted="false">"عنوان الحاسوب"</string>
+    <string name="ui_031" formatted="false">"اتصال ذكي"</string>
+    <string name="ui_032" formatted="false">"اقتران"</string>
+    <string name="ui_033" formatted="false">"إعادة اتصال"</string>
+    <string name="ui_034" formatted="false">"بحث"</string>
+    <string name="ui_035" formatted="false">"اختبار الاتصال"</string>
+    <string name="ui_036" formatted="false">"محاكي"</string>
+    <string name="ui_037" formatted="false">"الإدارة"</string>
+    <string name="ui_038" formatted="false">"الأجهزة الموثوقة"</string>
+    <string name="ui_039" formatted="false">"تشغيل التحكم"</string>
+    <string name="ui_040" formatted="false">"تثبيت رمز الاقتران"</string>
+    <string name="ui_041" formatted="false">"نسيان الاتصال"</string>
+    <string name="ui_042" formatted="false">"حذف هذا الهاتف"</string>
+    <string name="ui_043" formatted="false">"الطاقة"</string>
+    <string name="ui_044" formatted="false">"إطفاء الحاسوب"</string>
+    <string name="ui_045" formatted="false">"إلغاء الإطفاء"</string>
+    <string name="ui_046" formatted="false">"التشخيص"</string>
+    <string name="ui_047" formatted="false">"الحالة"</string>
+    <string name="ui_048" formatted="false">"تفاصيل التشخيص"</string>
+    <string name="ui_049" formatted="false">"جار الاتصال..."</string>
+    <string name="ui_050" formatted="false">" · التحكم متوقف"</string>
+    <string name="ui_051" formatted="false">" · متصل"</string>
+    <string name="ui_052" formatted="false">"استئناف التحكم"</string>
+    <string name="ui_053" formatted="false">"فتح لوحة المفاتيح عند الاتصال"</string>
+    <string name="ui_054" formatted="false">"حساسية المؤشر: "</string>
+    <string name="ui_055" formatted="false">"حساسية المؤشر: %.1f"</string>
+    <string name="ui_056" formatted="false">"إلغاء"</string>
+    <string name="ui_057" formatted="false">"حفظ"</string>
+    <string name="ui_058" formatted="false">"نسيان هذا الاتصال؟"</string>
+    <string name="ui_059" formatted="false">"ستحتاج إلى الاقتران مجددًا."</string>
+    <string name="ui_060" formatted="false">"نسيان"</string>
+    <string name="ui_061" formatted="false">"الاتصال يعمل"</string>
+    <string name="ui_062" formatted="false">"الحاسوب: "</string>
+    <string name="ui_063" formatted="false">" - الأجهزة: "</string>
+    <string name="ui_064" formatted="false">"خطأ في إنشاء الرسالة: "</string>
+    <string name="ui_065" formatted="false">"جار البحث عن حاسوبك في الشبكة..."</string>
+    <string name="ui_066" formatted="false">"ما زلنا نبحث عن حاسوبك..."</string>
+    <string name="ui_067" formatted="false">"فشل البحث: "</string>
+    <string name="ui_068" formatted="false">"لم نعثر على الحاسوب. افتح Qareeb Control عليه وتأكد من اتصال الجهازين بالشبكة المحلية نفسها."</string>
+    <string name="ui_069" formatted="false">"الحاسوب"</string>
+    <string name="ui_070" formatted="false">"تم العثور على "</string>
+    <string name="ui_071" formatted="false">" - أدخل رمز الاقتران"</string>
+    <string name="ui_072" formatted="false">"تم اختيار اتصال المحاكي"</string>
+    <string name="ui_073" formatted="false">"أدخل عنوان الحاسوب الظاهر في برنامجه"</string>
+    <string name="ui_074" formatted="false">"جار قياس زمن الاستجابة..."</string>
+    <string name="ui_075" formatted="false">"لم يصل رد قياس صحيح"</string>
+    <string name="ui_076" formatted="false">"متوسط الاستجابة: %.1f مللي ثانية\nأعلى استجابة: %.1f مللي ثانية\nنجحت 10 من 10 قياسات"</string>
+    <string name="ui_077" formatted="false">"اكتمل قياس الاتصال"</string>
+    <string name="ui_078" formatted="false">"اكتمل الاختبار. حدّث Qareeb Control على الحاسوب لتحسين دعم الاتصال."</string>
+    <string name="ui_079" formatted="false">"أدخل رمز الاقتران الظاهر على الحاسوب"</string>
+    <string name="ui_080" formatted="false">"جار تأكيد الاتصال؛ المحاولة الحالية ما زالت قيد التنفيذ"</string>
+    <string name="ui_081" formatted="false">"جار تأكيد الاتصال بالحاسوب..."</string>
+    <string name="ui_082" formatted="false">"تأخر الرد؛ جار إعادة التحقق من الربط نفسه..."</string>
+    <string name="ui_083" formatted="false">"تم الاتصال؛ الماوس ولوحة المفاتيح جاهزان"</string>
+    <string name="ui_084" formatted="false">"لم يعتمد الحاسوب الاقتران المحفوظ. أعد الاقتران بالرمز الظاهر عليه الآن."</string>
+    <string name="ui_085" formatted="false">"رفض الحاسوب الاقتران: "</string>
+    <string name="ui_086" formatted="false">"لم يتم حفظ اقتران بهذا الحاسوب. اقترن به أولًا."</string>
+    <string name="ui_087" formatted="false">"خطأ حركة الماوس: "</string>
+    <string name="ui_088" formatted="false">"خطأ النقر: "</string>
+    <string name="ui_089" formatted="false">"خطأ التمرير: "</string>
+    <string name="ui_090" formatted="false">"استخدم حرفًا إنجليزيًا مع Ctrl أو Alt"</string>
+    <string name="ui_091" formatted="false">"تعذر إرسال الكتابة؛ انتظر وصول الأوامر السابقة ثم أعد المحاولة"</string>
+    <string name="ui_092" formatted="false">"خطأ الكتابة اللحظية: "</string>
+    <string name="ui_093" formatted="false">"خطأ لوحة المفاتيح: "</string>
+    <string name="ui_094" formatted="false">"خطأ التحكم بالوسائط: "</string>
+    <string name="ui_095" formatted="false">"خطأ الاختصار: "</string>
+    <string name="ui_096" formatted="false">"جهاز"</string>
+    <string name="ui_097" formatted="false">" (هذا الهاتف)"</string>
+    <string name="ui_098" formatted="false">"إغلاق"</string>
+    <string name="ui_099" formatted="false">"خطأ عرض الأجهزة: "</string>
+    <string name="ui_100" formatted="false">"تم تحديث الحساسية"</string>
+    <string name="ui_101" formatted="false">"خطأ تحديث الإعدادات: "</string>
+    <string name="ui_102" formatted="false">"تم تغيير رمز الاقتران"</string>
+    <string name="ui_103" formatted="false">"رمز الاقتران الجديد: "</string>
+    <string name="ui_104" formatted="false">"خطأ تغيير الرمز: "</string>
+    <string name="ui_105" formatted="false">"تم حذف هذا الهاتف. ستحتاج اقترانا جديدا."</string>
+    <string name="ui_106" formatted="false">"خطأ حذف الجهاز: "</string>
+    <string name="ui_107" formatted="false">"انتظر انتهاء محاولة الاتصال الحالية أولا"</string>
+    <string name="ui_108" formatted="false">"تم نسيان الاتصال على هذا الهاتف. أعد الاقتران بالرمز الحالي الظاهر على الحاسوب."</string>
+    <string name="ui_109" formatted="false">"نفذ الاقتران أولا قبل أوامر الطاقة."</string>
+    <string name="ui_110" formatted="false">"إطفاء الحاسوب؟"</string>
+    <string name="ui_111" formatted="false">"سيتم جدولة إطفاء الحاسوب بعد 30 ثانية. يمكنك إلغاء العملية من الزر المجاور."</string>
+    <string name="ui_112" formatted="false">"إطفاء"</string>
+    <string name="ui_113" formatted="false">"اختبار فقط: تم قبول أمر الإطفاء"</string>
+    <string name="ui_114" formatted="false">"تم جدولة إطفاء الحاسوب بعد "</string>
+    <string name="ui_115" formatted="false">" ثانية"</string>
+    <string name="ui_116" formatted="false">"خطأ أمر الإطفاء: "</string>
+    <string name="ui_117" formatted="false">"اختبار فقط: تم إلغاء الإطفاء"</string>
+    <string name="ui_118" formatted="false">"تم إلغاء أمر الإطفاء"</string>
+    <string name="ui_119" formatted="false">"خطأ إلغاء الإطفاء: "</string>
+    <string name="ui_120" formatted="false">"تم تفعيل التحكم بالحاسوب"</string>
+    <string name="ui_121" formatted="false">"خطأ تفعيل التحكم: "</string>
+    <string name="ui_122" formatted="false">"تم إيقاف التحكم بالحاسوب"</string>
+    <string name="ui_123" formatted="false">"خطأ إيقاف التحكم: "</string>
+    <string name="ui_124" formatted="false">"انتظر تأكيد الاتصال أولا"</string>
+    <string name="ui_125" formatted="false">"التحكم متوقف"</string>
+    <string name="ui_126" formatted="false">"نفذ الاتصال أولًا"</string>
+    <string name="ui_127" formatted="false">"خطأ: "</string>
+    <string name="ui_128" formatted="false">"تم: "</string>
+    <string name="ui_129" formatted="false">"تعذر تجهيز أمر التحكم"</string>
+    <string name="ui_130" formatted="false">"الاتصال بطيء؛ انتظر وصول الأوامر السابقة"</string>
+    <string name="ui_131" formatted="false">"زمن الاستجابة: %.1f مللي ثانية"</string>
+    <string name="ui_132" formatted="false">"متصل"</string>
+    <string name="ui_133" formatted="false">"الاقتران/إعادة الاتصال"</string>
+    <string name="ui_134" formatted="false">"الاتصال"</string>
+    <string name="ui_135" formatted="false">"تم فتح الاتصال وإرسال الطلب، لكن لم يصل رد الحاسوب. لم أغيّر الربط المحفوظ."</string>
+    <string name="ui_136" formatted="false">"تعذر فتح الاتصال مع "</string>
+    <string name="ui_137" formatted="false">". تحقق من عنوان الحاسوب."</string>
+    <string name="ui_138" formatted="false">"انتهت مهلة "</string>
+    <string name="ui_139" formatted="false">" مع "</string>
+    <string name="ui_140" formatted="false">". اضغط بحث ثم جرّب اقتران أو إعادة اتصال."</string>
+    <string name="ui_141" formatted="false">"فشل "</string>
+    <string name="ui_142" formatted="false">"لم يصل رد من الحاسوب"</string>
+    <string name="ui_143" formatted="false">"جار التحقق من الاتصال المحفوظ"</string>
+    <string name="ui_144" formatted="false">"المحاكي جاهز على 10.0.2.2. أدخل رمز الاقتران ثم اضغط اقتران."</string>
+    <string name="ui_145" formatted="false">"أدخل عنوان الحاسوب ورمز الاقتران ثم اضغط اقتران"</string>
+    <string name="language_title" formatted="false">"لغة الواجهة"</string>
+    <string name="language_system" formatted="false">"لغة النظام"</string>
+    <string name="language_cancel" formatted="false">"إلغاء"</string>
+    <string name="local_network_lost">انقطع الاتصال المحلي. بانتظار عودة الشبكة.</string>
+    <string name="local_network_required">وصّل الجهازين بالشبكة المحلية نفسها وتحقق من وسيلة الاتصال المختارة. لا يمكن التحكم عبر بيانات الهاتف أو اتصال VPN.</string>
+    <string name="server_identity_unverified">تعذّر التحقق من الحاسوب المقترن. حدّث برنامج الحاسوب أو تحقق من الاقتران.</string>
+    <string name="tls_fingerprint">بصمة شهادة الحاسوب (SHA-256)</string>
+    <string name="tls_invalid">أدخل البصمة المكونة من 64 خانة كما تظهر على الحاسوب.</string>
+    <string name="tls_saved">حُفظت هوية الحاسوب. ستتطلب الاتصالات التالية اتصالًا مشفّرًا.</string>
+    <string name="tls_save_failed">تعذّر حفظ هوية الحاسوب.</string>
+    <string name="tls_failed">تعذّر الاتصال الآمن. تحقق من بصمة الأمان وإعداد الاتصال الآمن على الحاسوب. لن يُستخدم اتصال غير مشفّر.</string>
+    <string name="qr_scan">مسح رمز الاقتران QR</string>
+    <string name="qr_confirm">اقتران بهذا الحاسوب؟</string>
+    <string name="qr_invalid">رمز الاقتران غير صالح أو انتهت صلاحيته. اعرض رمز QR جديدًا على الحاسوب وامسحه مجددًا. إذا استمرت المشكلة، تحقق من التاريخ والوقت على الجهازين.</string>
+    <string name="transport_mode">وسيلة الاتصال</string>
+    <string name="transport_auto">شبكة محلية تلقائية</string>
+    <string name="transport_usb">شبكة USB فقط (تجريبي)</string>
+    <string name="transport_auto_short">تلقائي</string>
+    <string name="transport_usb_short">USB فقط</string>
+    <string name="transport_usb_requires_android">يتطلب وضع USB نظام Android 12 أو أحدث واتصال شبكة USB يدعمه جهازك. كابل الشحن وحده لا يكفي، والدعم يختلف حسب الجهاز.</string>
+    <string name="credential_storage_error">تعذر الوصول إلى تخزين الاقتران الآمن. لم نحذف الاقتران المحفوظ. أعد تشغيل التطبيق وحاول مجددًا.</string>
+    <string name="computers_title">حواسيبي</string>
+    <string name="computer_add">إضافة حاسوب</string>
+    <string name="computer_empty">لا توجد حواسيب محفوظة</string>
+    <string name="computer_connected">متصل</string>
+    <string name="computer_saved">محفوظ</string>
+    <string name="computer_connect">اتصال</string>
+    <string name="computer_forget">نسيان الحاسوب</string>
+    <string name="computer_forget_confirm">نسيان %1$s على هذا الهاتف؟ لا يؤدي ذلك إلى إلغاء صلاحية الهاتف على الحاسوب.</string>
+    <string name="computer_forgotten">تم نسيان الحاسوب على هذا الهاتف.</string>
+    <string name="computer_last_connected">آخر اتصال: %1$s</string>
+    <string name="computer_new_ready">جاهز لاقتران حاسوب آخر.</string>
+    <string name="computer_storage_error">تعذر الوصول إلى الحواسيب المحفوظة. لم نُعد ضبط الاقترانات.</string>
+    <string name="computer_reconnect_required">تغيّر العنوان. أعد الاتصال قبل إرسال الأوامر.</string>
+    <string name="adaptive_connection">تحسين الاستجابة</string>
+    <string name="auto_keyboard_focus">فتح لوحة المفاتيح عند تحديد حقل كتابة بالحاسوب</string>
+    <string name="connection_attention">الاتصال يحتاج مراجعة</string>
+    <string name="connection_no_network">اتصل بشبكة محلية للوصول إلى حاسوبك.</string>
+    <string name="connection_retry_hint">تحقق من الحاسوب وأعد الاتصال من الأجهزة.</string>
+    <string name="connection_details_hint">راجع تفاصيل الاتصال في قسم الأجهزة.</string>
+</resources>

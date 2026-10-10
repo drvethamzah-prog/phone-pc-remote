@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qareeb Control - الدعم المحلي</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Qareeb Control">
+      <span class="brand-mark"></span>
+      <span>Qareeb Control</span>
+    </a>
+    <nav>
+      <a href="admin.html">لوحة الإدارة</a>
+      <a href="#run">التشغيل</a>
+      <a href="#android">Android</a>
+      <a href="#security">الأمان</a>
+      <a href="#tests">الاختبار</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">تحكم محلي بالكامل</p>
+        <h1>Qareeb Control</h1>
+        <p>تطبيق يحول الهاتف إلى ماوس وكيبورد وريموت ميديا للحاسوب عبر شبكة Wi-Fi المحلية، بدون حسابات أو خدمات خارجية.</p>
+      </div>
+      <img src="assets/local-control-preview.svg" alt="هاتف يتحكم بحاسوب عبر الشبكة المحلية">
+    </section>
+
+    <section id="run" class="band">
+      <div class="section-head">
+        <p class="eyebrow">Windows</p>
+        <h2>تشغيل السيرفر</h2>
+      </div>
+      <ol class="steps">
+        <li>افتح Terminal داخل مجلد المشروع.</li>
+        <li>شغل السيرفر من مجلد `desktop-server`.</li>
+        <li>انسخ IP المحلي ورمز الاقتران الظاهرين في نافذة السيرفر.</li>
+      </ol>
+      <pre><code>cd desktop-server
+python .\src\server.py</code></pre>
+    </section>
+
+    <section id="android" class="band muted">
+      <div class="section-head">
+        <p class="eyebrow">Android</p>
+        <h2>تطبيق الهاتف</h2>
+      </div>
+      <p>مشروع Android موجود داخل `mobile-app/`، وأدوات البناء المحلية مثبتة. تم إنتاج APK تجريبي بنجاح داخل `mobile-app/app/build/outputs/apk/debug/app-debug.apk`، واختباره على Android Emulator عبر `10.0.2.2:8765` مع تراكباد محسّن وتمرير بإصبعين وزر بحث تلقائي عن السيرفر.</p>
+      <pre><code>mobile-app/</code></pre>
+    </section>
+
+    <section id="security" class="band">
+      <div class="section-head">
+        <p class="eyebrow">أمان محلي</p>
+        <h2>ما الذي يحمي التحكم؟</h2>
+      </div>
+      <div class="grid">
+        <article>
+          <h3>رمز اقتران</h3>
+          <p>الحاسوب يعرض رمز اقتران مؤقت، والهاتف يستخدمه لأول اتصال.</p>
+        </article>
+        <article>
+          <h3>Token لكل جهاز</h3>
+          <p>بعد الاقتران يحفظ السيرفر token خاصا بالجهاز الموثوق، وتخفي واجهة Android قيمة token عند عرض الاستجابة.</p>
+        </article>
+        <article>
+          <h3>إيقاف فوري</h3>
+          <p>يمكن إيقاف التحكم عبر `control_stop` وإعادة تفعيله عبر `control_start`.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tests" class="band muted">
+      <div class="section-head">
+        <p class="eyebrow">اختبار محلي</p>
+        <h2>أوامر مفيدة</h2>
+      </div>
+      <pre><code>python .\src\test_client.py ping
+python .\src\test_client.py status
+python .\src\test_client.py trusted-devices --device-id test-phone --token YOUR_TOKEN
+python .\src\test_client.py control-stop --device-id test-phone --token YOUR_TOKEN
+python .\src\test_client.py control-start --device-id test-phone --token YOUR_TOKEN
+python .\src\test_client.py shutdown-computer --device-id test-phone --token YOUR_TOKEN --confirm-shutdown</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <span>Qareeb Control</span>
+    <span>Local only</span>
+  </footer>
+</body>
+</html>

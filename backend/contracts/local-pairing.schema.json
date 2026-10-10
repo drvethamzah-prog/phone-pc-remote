@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qareeb.local-pairing.v1",
+  "title": "Local pairing contract",
+  "type": "object",
+  "required": ["initiator", "localNetworkRequired", "qrSingleUse", "emailRequired", "controlRequiresLocal", "accountConfirmationRequired"],
+  "properties": {
+    "initiator": { "const": "desktop-server" },
+    "localNetworkRequired": { "const": true },
+    "qrSingleUse": { "const": true },
+    "emailRequired": { "const": true },
+    "controlRequiresLocal": { "const": true },
+    "accountConfirmationRequired": { "const": true },
+    "registeredPhoneProvidesAccountEmail": { "const": true },
+    "serverMustAskBeforeLinking": { "const": true },
+    "maxPhonesPerComputer": { "type": "integer", "minimum": 1 },
+    "cloudRole": { "enum": ["status_permissions_subscription_settings_backup_only"] },
+    "backupScope": { "enum": ["settings_only"] }
+  },
+  "additionalProperties": false
+}

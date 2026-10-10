@@ -1,0 +1,19 @@
+{
+  "host": "127.0.0.1",
+  "port": 8765,
+  "scope": "request/response RTT from this computer",
+  "new_connection": {
+    "samples": 100,
+    "mean_ms": 9.643,
+    "median_ms": 7.885,
+    "p95_ms": 22.939,
+    "max_ms": 25.636
+  },
+  "persistent": {
+    "samples": 100,
+    "mean_ms": 0.113,
+    "median_ms": 0.105,
+    "p95_ms": 0.147,
+    "max_ms": 0.397
+  }
+}
