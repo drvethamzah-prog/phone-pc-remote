@@ -1082,6 +1082,7 @@ public class MainActivity extends Activity {
     }
 
     private void refreshConnectionLabel() {
+        if (connectionLabel == null || stopButton == null) return;
         connectionLabel.setText(pairingInProgress ? getString(R.string.ui_049) : !connected ? getString(R.string.ui_002) : computerName + (controlsStopped ? getString(R.string.ui_050) : getString(R.string.ui_051)));
         connectionLabel.setTextColor(!connected || controlsStopped ? COLOR_MUTED : COLOR_PRIMARY);
         stopButton.setImageDrawable(icon(controlsStopped ? R.drawable.ic_circle_play : R.drawable.ic_circle_stop, controlsStopped ? COLOR_PRIMARY : COLOR_DANGER, 22));
