@@ -2525,7 +2525,8 @@ public class MainActivity extends Activity {
     }
 
     private void setStatus(String message) {
-        statusText.setText(message);
+        if (statusText != null) statusText.setText(message);
+        if (connectionNoticeTitle == null || noticeText == null || connectionNotice == null) return;
         boolean problem = message.startsWith("خطأ") || message.startsWith("فشل") || message.startsWith("تعذر")
                 || message.startsWith("انتهت") || message.startsWith("رفض") || message.startsWith("لم يعتمد")
                 || message.startsWith("تم فتح الاتصال") || message.startsWith("استخدم حرف");
