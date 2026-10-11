@@ -268,7 +268,7 @@ public class MainActivity extends Activity {
             getWindow().setNavigationBarColor(COLOR_SURFACE);
         }
         if (Build.VERSION.SDK_INT >= 30) getWindow().setDecorFitsSystemWindows(false);
-        setContentView(buildUi());
+        setContentView(prefs.getString("cloud_access_token", "").isEmpty() ? buildAuthGate() : buildUi());
         setStatus(credentialFailure ? getString(R.string.credential_storage_error) : initialStatusMessage());
         watchLocalNetwork();
     }
@@ -924,6 +924,24 @@ public class MainActivity extends Activity {
         return scrollable(panel);
     }
 
+    private View buildAuthGate() {
+        LinearLayout panel = pagePanel();
+        panel.addView(section("Qareeb Control"));
+        panel.addView(text("Sign in or create an account before using local pairing.", 16, false), compactWrap());
+        accountEmailInput = input("Email address (required)", prefs.getString("account_email", ""), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        accountEmailInput.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        panel.addView(accountEmailInput, matchWrap());
+        EditText password = input("Password", "", InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        LinearLayout buttons = row();
+        buttons.addView(outlinedButton("Create new account", v -> cloudAuth(password, false)), weight());
+        buttons.addView(outlinedButton("Sign in", v -> cloudAuth(password, true)), weight());
+        panel.addView(password, matchWrap());
+        panel.addView(buttons, matchWrap());
+        statusText = text("", 14, false);
+        panel.addView(statusText, compactWrap());
+        return scrollable(panel);
+    }
+
     private LinearLayout pagePanel() {
         LinearLayout panel = new LinearLayout(this);
         panel.setOrientation(LinearLayout.VERTICAL);
@@ -1567,6 +1585,9 @@ public class MainActivity extends Activity {
                             setStatus("Account created. Check your email to verify it.");
                         } else {
                             setStatus(signIn ? "Cloud sign-in successful" : "Cloud account created");
+                            if (signIn && result.has("access_token")) {
+                                runOnUiThread(() -> setContentView(buildUi()));
+                            }
                         }
                     } else {
                         String error = result.optString("error", "cloud_request_failed");
