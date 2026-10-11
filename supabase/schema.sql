@@ -23,6 +23,8 @@ create policy "users manage own settings" on public.account_settings
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "users read own devices" on public.devices
   for select using (auth.uid() = user_id);
+create policy "users insert own devices" on public.devices
+  for insert with check (auth.uid() = user_id);
 
 create or replace function public.touch_settings_updated_at()
 returns trigger language plpgsql as $$
@@ -68,5 +70,7 @@ create policy "members read own role" on public.account_members
   for select using (auth.uid() = user_id);
 create policy "users read own phones" on public.phones
   for select using (auth.uid() = user_id);
+create policy "users insert own phones" on public.phones
+  for insert with check (auth.uid() = user_id);
 create policy "users read own audit" on public.audit_events
   for select using (auth.uid() = user_id);

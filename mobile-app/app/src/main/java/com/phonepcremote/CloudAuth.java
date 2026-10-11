@@ -31,4 +31,19 @@ public final class CloudAuth {
         result.put("httpStatus", connection.getResponseCode());
         return result;
     }
+
+    public static JSONObject registerPairing(String accessToken, JSONObject body) throws Exception {
+        HttpURLConnection connection = (HttpURLConnection) new URL(BASE_URL + "/api/pairing/register").openConnection();
+        connection.setRequestMethod("POST");
+        connection.setConnectTimeout(8000); connection.setReadTimeout(10000);
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Authorization", "Bearer " + accessToken);
+        connection.setRequestProperty("X-Qareeb-Token", accessToken);
+        connection.setDoOutput(true);
+        try (OutputStream output = connection.getOutputStream()) { output.write(body.toString().getBytes(StandardCharsets.UTF_8)); }
+        java.io.InputStream stream = connection.getResponseCode() >= 400 ? connection.getErrorStream() : connection.getInputStream();
+        JSONObject result = new JSONObject(new String(stream.readAllBytes(), StandardCharsets.UTF_8));
+        result.put("httpStatus", connection.getResponseCode());
+        return result;
+    }
 }

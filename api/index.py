@@ -25,7 +25,7 @@ class handler(BaseHTTPRequestHandler):
     def supabase(self, path, method="GET", payload=None, token=None):
         base = os.environ["SUPABASE_URL"].rstrip("/")
         key = os.environ["SUPABASE_ANON_KEY"]
-        headers = {"apikey": key, "Content-Type": "application/json"}
+        headers = {"apikey": key, "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates,return=minimal"}
         if token: headers["Authorization"] = "Bearer " + token
         data = json.dumps(payload).encode() if payload is not None else None
         request = Request(base + path, data=data, headers=headers, method=method)
@@ -85,6 +85,21 @@ class handler(BaseHTTPRequestHandler):
         try: payload = self.body()
         except Exception: return self.json(400, {"error": "invalid_json"})
         try:
+            if path in ("/pairing/register", "/api/pairing/register"):
+                token = self.bearer()
+                if not token: return self.json(401, {"error": "missing_session"})
+                auth_status, identity, _ = self.admin_user(token)
+                if auth_status != 200: return self.json(401, {"error": "invalid_session"})
+                user_id = identity["user"]["id"]
+                device_id = str(payload.get("deviceId", "")).strip()
+                phone_id = str(payload.get("phoneId", "")).strip()
+                if not device_id or not phone_id: return self.json(400, {"error": "deviceId_and_phoneId_required"})
+                device = {"user_id": user_id, "device_id": device_id, "name": str(payload.get("deviceName", "Computer")), "platform": str(payload.get("platform", "windows")), "status": "online"}
+                phone = {"user_id": user_id, "device_id": device_id, "phone_id": phone_id, "name": str(payload.get("phoneName", "Phone")), "email": str(payload.get("email", identity["user"].get("email", ""))), "paired_at": "now()"}
+                ds, _ = self.supabase("/rest/v1/devices", "POST", device, token=token)
+                ps, _ = self.supabase("/rest/v1/phones", "POST", phone, token=token)
+                if ds >= 400 or ps >= 400: return self.json(400, {"error": "pairing_registration_failed", "deviceStatus": ds, "phoneStatus": ps})
+                return self.json(200, {"ok": True, "controlPath": "local-only"})
             if path in ("/auth/register", "/api/auth/register"):
                 status, result = self.supabase("/auth/v1/signup", "POST", {"email": payload.get("email", ""), "password": payload.get("password", "")})
                 return self.json(status, {"user": result.get("user"), "verificationRequired": not bool(result.get("session")), "error": result.get("msg") or result.get("message")})

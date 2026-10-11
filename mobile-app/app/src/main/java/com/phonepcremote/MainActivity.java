@@ -1562,6 +1562,7 @@ public class MainActivity extends Activity {
                 int status = result.optInt("httpStatus", 500);
                 mainHandler.post(() -> {
                     if (status >= 200 && status < 300) {
+                        if (signIn && result.has("access_token")) prefs.edit().putString("cloud_access_token", result.optString("access_token")).apply();
                         if (result.optBoolean("verificationRequired", false)) {
                             setStatus("Account created. Check your email to verify it.");
                         } else {
@@ -1710,6 +1711,7 @@ public class MainActivity extends Activity {
                         return;
                     }
                     connected = true;
+                    registerCloudPairing();
                     reconnectPolicy.reset();
                     prefs.edit().putString("local_ipv6", ipv6Endpoints.get()).apply();
                     prefs.edit().remove(pendingKey).apply();
@@ -1734,6 +1736,19 @@ public class MainActivity extends Activity {
                     }
                 });
             }
+        });
+    }
+
+    private void registerCloudPairing() {
+        String accessToken = prefs.getString("cloud_access_token", "");
+        String email = accountEmailInput == null ? prefs.getString("account_email", "") : accountEmailInput.getText().toString().trim();
+        if (accessToken.isEmpty() || email.isEmpty()) return;
+        networkExecutor.execute(() -> {
+            try {
+                JSONObject body = new JSONObject().put("deviceId", hostInput.getText().toString().trim()).put("phoneId", deviceId)
+                        .put("deviceName", computerName).put("phoneName", deviceName).put("email", email).put("platform", "android");
+                CloudAuth.registerPairing(accessToken, body);
+            } catch (Exception ignored) { }
         });
     }
 
